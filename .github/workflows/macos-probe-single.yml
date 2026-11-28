@@ -2,11 +2,12 @@ name: macos-probe-single
 on:
   push:
     branches: [ main ]
-    paths:
-      - '.github/workflows/macos-probe-single.yml'
 jobs:
-  one:
+  linux-control:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "UBUNTU_CONTROL_OK $(uname -a)"
+  mac14:
     runs-on: macos-14
-    timeout-minutes: 10
     steps:
       - run: echo "MACOS14_SINGLE_OK $(sw_vers)"
